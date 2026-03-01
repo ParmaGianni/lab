@@ -41,11 +41,10 @@ switch:
     [ "$(talosctl config contexts | rg "\*.*sleepy")" != "" ] || \
     [ "$CLUSTER_BRANCH" = "prod" ]; then \
         echo "You are in the danger zone! Do you want to continue?"; \
-        echo ""; \
-        read -p "Choose (Y/n): " choice; \
+        echo "Input --prod-prod-prod to continue"; \
+        read choice; \
         case $choice in \
-            Y) exit 0;; \
-            n) exit 1;; \
+           --prod-prod-prod) exit 0;; \
             *) exit 1;; \
         esac \
     else \
