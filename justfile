@@ -34,3 +34,20 @@ switch:
         1) just talos::_destroy;; \
         *) exit 1;; \
     esac
+
+# reusable guard-rail to prevent unwanted alterations to the production environment
+@_guard:
+    if [ "$(kconf ls | rg "\*.*sleepy")" != "" ] || \
+    [ "$(talosctl config contexts | rg "\*.*sleepy")" != "" ] || \
+    [ "$CLUSTER_BRANCH" = "prod" ]; then \
+        echo "You are in the danger zone! Do you want to continue?"; \
+        echo ""; \
+        read -p "Choose (Y/n): " choice; \
+        case $choice in \
+            Y) exit 0;; \
+            n) exit 1;; \
+            *) exit 1;; \
+        esac \
+    else \
+        exit 0; \
+    fi; \
