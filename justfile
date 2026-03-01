@@ -38,11 +38,11 @@ switch:
 # reusable guard-rail to prevent unwanted alterations to the production environment
 @_guard:
     if [ "$(kconf ls | rg "\*.*sleepy")" != "" ] || \
+    [ "$(kconf ls | rg "\*.*k8s")" != "" ] || \
     [ "$(talosctl config contexts | rg "\*.*sleepy")" != "" ] || \
     [ "$CLUSTER_BRANCH" = "prod" ]; then \
         echo "You are in the danger zone! Do you want to continue?"; \
-        echo "Input --prod-prod-prod to continue"; \
-        read choice; \
+        read -p "Input '--prod-prod-prod' to continue: " choice; \
         case $choice in \
            --prod-prod-prod) exit 0;; \
             *) exit 1;; \
