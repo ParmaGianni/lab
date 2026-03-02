@@ -36,7 +36,7 @@ mod talos
     read -p "Choose [0..1]: " choice; \
     case $choice in \
         0) just clusters::_k3d;; \
-        1) just talos::apply -i;; \
+        1) just talos::_apply -i;; \
         *) exit 1;; \
     esac
 # destroys and cleans up a local cluster
