@@ -6,14 +6,9 @@ k_base := justfile_directory() + "/kustomizations"
     {{k_base}}/{{kustomization}}/$CLUSTER_BRANCH
     echo ""
 # Apply a kustomization for testing purposes
-@apply kustomization: (build kustomization)
-    context_check=$(kconf ls | rg "\*.*sleepy"); \
-    if [ $CLUSTER_BRANCH == "prod" ] || [ "$context_check" != "" ]; then \
-        echo "Don't run this on the prod server!"; \
-    else \
-        kubectl apply -k \
-        {{k_base}}/{{kustomization}}/$CLUSTER_BRANCH; \
-    fi
+@apply kustomization:
+    kubectl apply -k \
+    {{k_base}}/{{kustomization}}/$CLUSTER_BRANCH; \
 # Boostrap secrets onto the current context
 @secrets:
     echo "=== Boostrapping secrets to $CLUSTER_BRANCH ==="

@@ -8,8 +8,16 @@ switch:
         dev) echo "use flake .#prod" > .envrc; direnv reload;; \
         prod) echo "use flake ." > .envrc; direnv reload;; \
     esac
+# build a kustomization to inspect outputs
+@build kustomization:
+    just kustomizations::build {{kustomization}}
+
+# apply a kustomization for testing purposes
+@apply kustomization: _guard (kustomizations::build kustomization)
+    just kustomizations::apply {{kustomization}}
+
 # creates a cluster for local development and testing
-@create:
+@create: _guard
     echo "Pick a backend:"; \
     echo ""; \
     echo "0) k3d"; \
@@ -22,7 +30,7 @@ switch:
         *) exit 1;; \
     esac
 # destroys and cleans up a local cluster
-@destroy:
+@destroy: _guard
     echo "Pick a backend:"; \
     echo ""; \
     echo "0) k3d"; \
