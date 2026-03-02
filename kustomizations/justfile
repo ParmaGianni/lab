@@ -1,20 +1,5 @@
 k_base := justfile_directory() + "/kustomizations"
 
-# Runs a build of given kustomization
-@build kustomization:
-    kubectl kustomize \
-    {{k_base}}/{{kustomization}}/$CLUSTER_BRANCH
-    echo ""
-# Apply a kustomization for testing purposes
-@apply kustomization: (build kustomization)
-    context_check=$(kconf ls | rg "\*.*sleepy"); \
-    if [ $CLUSTER_BRANCH == "prod" ] || [ "$context_check" != "" ]; then \
-        echo "Don't run this on the prod server!"; \
-    else \
-        kubectl apply -k \
-        {{k_base}}/{{kustomization}}/$CLUSTER_BRANCH; \
-    fi
-# Boostrap secrets onto the current context
 @secrets:
     echo "=== Boostrapping secrets to $CLUSTER_BRANCH ==="
     kubectl -n kube-system create secret tls sealed-secrets-key --cert="$TLS_CRT_FILE" --key="$TLS_KEY_FILE"
@@ -28,3 +13,13 @@ k_base := justfile_directory() + "/kustomizations"
         flux suspend ks $k; \
         echo ""; \
     done
+# Runs a build of given kustomization
+@_build kustomization:
+    kubectl kustomize \
+    {{k_base}}/{{kustomization}}/$CLUSTER_BRANCH
+    echo ""
+# Apply a kustomization for testing purposes
+@_apply kustomization:
+    kubectl apply -k \
+    {{k_base}}/{{kustomization}}/$CLUSTER_BRANCH; \
+# Boostrap secrets onto the current context

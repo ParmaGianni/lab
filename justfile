@@ -2,14 +2,33 @@ mod clusters
 mod kustomizations
 mod talos
 
-# switch context
-switch:
-    case $CLUSTER_BRANCH in \
-        dev) echo "use flake .#prod" > .envrc; direnv reload;; \
-        prod) echo "use flake ." > .envrc; direnv reload;; \
-    esac
+# automates context switching to shell context
+@switch:
+    kconf use admin@$CONTEXT_KCONFIG; \
+    talosctl config use-context $CONTEXT_TALOS
+
+# build a kustomization to inspect outputs
+@build kustomization:
+    just kustomizations::_build {{kustomization}}
+
+# apply a kustomization for testing purposes
+@apply kustomization: _guard (kustomizations::_build kustomization)
+    just kustomizations::_apply {{kustomization}}
+
+# boostrap a flux cluster
+@flux-boostrap deploy_key: _guard
+    just custers::_boostrap {{deploy_key}}
+
+# apply a talos configuration
+@talos-apply *flags: _guard
+    just talos::_apply {{flags}}
+
+# boostrap etcd for current talos context
+@talos-bootstrap: _guard
+    just talos::_bootstrap
+
 # creates a cluster for local development and testing
-@create:
+@create: _guard
     echo "Pick a backend:"; \
     echo ""; \
     echo "0) k3d"; \
@@ -18,11 +37,11 @@ switch:
     read -p "Choose [0..1]: " choice; \
     case $choice in \
         0) just clusters::_k3d;; \
-        1) just talos::apply -i;; \
+        1) just talos::_apply -i;; \
         *) exit 1;; \
     esac
 # destroys and cleans up a local cluster
-@destroy:
+@destroy: _guard
     echo "Pick a backend:"; \
     echo ""; \
     echo "0) k3d"; \
@@ -34,3 +53,19 @@ switch:
         1) just talos::_destroy;; \
         *) exit 1;; \
     esac
+
+# reusable guard-rail to prevent unwanted alterations to the production environment
+@_guard:
+    if [ "$(kconf ls | rg "\*.*sleepy")" != "" ] || \
+    [ "$(kconf ls | rg "\*.*k8s")" != "" ] || \
+    [ "$(talosctl config contexts | rg "\*.*sleepy")" != "" ] || \
+    [ "$CLUSTER_BRANCH" = "prod" ]; then \
+        echo "You are in the danger zone! Do you want to continue?"; \
+        read -p "Input '--prod-prod-prod' to continue: " choice; \
+        case $choice in \
+           --prod-prod-prod) exit 0;; \
+            *) exit 1;; \
+        esac \
+    else \
+        exit 0; \
+    fi; \

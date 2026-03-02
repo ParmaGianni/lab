@@ -1,25 +1,14 @@
 flux_repo := "ssh://git@github.com/GianniBuoni/lab.git"
 
 # Bootstraps flux onto the current context
-[arg("context", short="c")]
-@bootstrap deploy_key context="dev":
-    kconf_check=$(kconf ls | rg "\*.*sleepy"); \
-    if [ "$kconf_check" != "" ] \
-    && [ $CLUSTER_BRANCH != "prod" ] \
-    || [ "{{context}}" != "prod" ]; then \
-        echo "Passed in context and cluster environment do not match."; \
-        echo "Please ensure that you are bootsrapping the correct cluster."; \
-        echo "Production context requires the '--conxtext=prod' flag."; \
-        exit 1; \
-    else \
-        echo "=== Bootstrapping flux to $CLUSTER_BRANCH ==="; \
-        flux bootstrap git \
-        --private-key-file={{deploy_key}} \
-        --url={{flux_repo}} \
-        --branch=main \
-        --path="clusters/$CLUSTER_BRANCH" \
-        --silent; \
-    fi
+@_bootstrap deploy_key:
+    echo "=== Bootstrapping flux to $CLUSTER_BRANCH ==="; \
+    flux bootstrap git \
+    --private-key-file={{deploy_key}} \
+    --url={{flux_repo}} \
+    --branch=main \
+    --path="clusters/$CLUSTER_BRANCH" \
+    --silent; \
 # create a new k3d cluster for quick testing
 _k3d:
     k3d cluster create $CLUSTER_BRANCH \

@@ -26,6 +26,8 @@ in {
       (mkEnv "TALOS_NODE" "dev")
       (mkTls "TLS_CRT_FILE" "crt" "${clusterContext}")
       (mkTls "TLS_KEY_FILE" "key" "${clusterContext}")
+      (mkEnv "CONTEXT_KCONFIG" "dev-gary")
+      (mkEnv "CONTEXT_TALOS" "dev-gary")
     ];
   };
   flake.aspects.devshells.prod = let
@@ -44,6 +46,8 @@ in {
       (mkEnv "TALOS_NODE" "sleepy-gary")
       (mkTls "TLS_CRT_FILE" "crt" "${clusterContext}")
       (mkTls "TLS_KEY_FILE" "key" "${clusterContext}")
+      (mkEnv "CONTEXT_KCONFIG" "sleepy-gary")
+      (mkEnv "CONTEXT_TALOS" "sleepy-gary")
     ];
   };
 }
