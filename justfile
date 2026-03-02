@@ -16,7 +16,7 @@ mod talos
     just kustomizations::_apply {{kustomization}}
 
 # boostrap a flux cluster
-@flux-boostrap {{deploy_key}}: _guard
+@flux-boostrap deploy_key: _guard
     just custers::_boostrap {{deploy_key}}
 
 # apply a talos configuration
