@@ -9,11 +9,22 @@ mod talos
 
 # build a kustomization to inspect outputs
 @build kustomization:
-    just kustomizations::build {{kustomization}}
+    just kustomizations::_build {{kustomization}}
 
 # apply a kustomization for testing purposes
-@apply kustomization: _guard (kustomizations::build kustomization)
-    just kustomizations::apply {{kustomization}}
+@apply kustomization: _guard (kustomizations::_build kustomization)
+    just kustomizations::_apply {{kustomization}}
+
+# boostrap a flux cluster
+@flux-boostrap {{deploy_key}}: _guard
+    just custers::_boostrap {{deploy_key}}
+
+# apply a talos configuration
+@talos-apply *flags: _guard
+    just talos::_apply {{flags}}
+
+@talos-bootstrap: _guard
+    just talos::_bootstrap
 
 # creates a cluster for local development and testing
 @create: _guard

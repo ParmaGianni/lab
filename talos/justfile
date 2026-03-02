@@ -1,18 +1,13 @@
 talos_dir := justfile_directory() + "/talos"
 clusterconfig := talos_dir + "/clusterconfig"
 
-@_get-nodes:
-    nodes=($TALOS_IPS); \
-    for i in "${!nodes[@]}"; do \
-        echo "$TALOS_NODE-0$i ${nodes[$i]}"; \
-    done
-
+# generate a talos config using env variables
 @gen-config:
     talhelper genconfig \
     -c "{{talos_dir}}/$CLUSTER_BRANCH/talconfig.yaml" \
     -s "{{talos_dir}}/$CLUSTER_BRANCH/talsecret.sops.yaml"
 
-@apply *flags:
+@_apply *flags:
     nodes=($TALOS_IPS); \
     config="{{clusterconfig}}/$TALOS_CLUSTER-"; \
     for i in "${!nodes[@]}"; do \
@@ -25,7 +20,7 @@ clusterconfig := talos_dir + "/clusterconfig"
         echo ""; \
     done
 
-@bootstrap:
+@_bootstrap:
     nodes=($TALOS_IPS); \
     talosctl bootstrap -n ${nodes[0]}
 
