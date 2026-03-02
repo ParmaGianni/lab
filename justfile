@@ -23,6 +23,7 @@ mod talos
 @talos-apply *flags: _guard
     just talos::_apply {{flags}}
 
+# boostrap etcd for current talos context
 @talos-bootstrap: _guard
     just talos::_bootstrap
 
