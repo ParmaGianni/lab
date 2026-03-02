@@ -2,12 +2,11 @@ mod clusters
 mod kustomizations
 mod talos
 
-# switch context
-switch:
-    case $CLUSTER_BRANCH in \
-        dev) echo "use flake .#prod" > .envrc; direnv reload;; \
-        prod) echo "use flake ." > .envrc; direnv reload;; \
-    esac
+# automates context switching to shell context
+@switch:
+    kconf use admin@$CONTEXT_KCONFIG; \
+    talosctl config use-context $CONTEXT_TALOS
+
 # build a kustomization to inspect outputs
 @build kustomization:
     just kustomizations::build {{kustomization}}
