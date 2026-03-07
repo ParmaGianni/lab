@@ -4,3 +4,4 @@ namespace: forgejo
 resources:
 - stateful-set.yaml
 - svc.yaml
+- pg.yaml
