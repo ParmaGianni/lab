@@ -12,3 +12,16 @@ spec:
   - name: ssh
     port: 22
     targetPort: ssh
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: forgejo-ingress
+spec:
+  entrypoints:
+  - web-ext
+  routes:
+  - services:
+    - name: forgejo-svc
+      port: http
+      nativeLB: true
