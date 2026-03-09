@@ -5,3 +5,4 @@ resources:
 components:
 - ../../../components/dashboards-dev
 - ../../../components/forgejo-values
+- ../../../components/forgejo-values-dev
