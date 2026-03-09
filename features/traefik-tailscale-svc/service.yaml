@@ -18,6 +18,9 @@ spec:
     port: 8211
     protocol: UDP
     targetPort: pals
+  - name: git-ssh
+    port: 20
+    targetPort: git-ssh
   selector:
     app.kubernetes.io/name: traefik
   type: LoadBalancer
