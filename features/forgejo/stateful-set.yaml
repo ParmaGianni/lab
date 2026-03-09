@@ -23,7 +23,7 @@ spec:
         app: forgejo
     spec:
       containers:
-      - image: codeberg.org/forgejo/forgejo:11
+      - image: codeberg.org/forgejo/forgejo:14.0.3@sha256:8f4b1f86750e206824c669e1af17b6c6e8da9ed1a8ebda615db7526ee86d3eb2
         name: forgejo
         ports:
         - name: http
@@ -35,6 +35,7 @@ spec:
           value: "1000"
         - name: USER_GID
           value: "1000"
+        envFrom: []
         volumeMounts:
         - name: forgejo-pvc
           mountPath: /data
