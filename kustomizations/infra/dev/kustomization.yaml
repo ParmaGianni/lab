@@ -4,5 +4,7 @@ resources:
 - ../../../features/rook-ceph-operator
 - ../../../features/cloudnative-pg
 - ../../../features/traefik
+- ../../../features/cloudflared
 components:
 - ../../../components/traefik-values
+- ../../../components/secrets-dev/cloudflared
