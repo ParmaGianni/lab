@@ -18,7 +18,7 @@ kind: IngressRoute
 metadata:
   name: forgejo-ingress
 spec:
-  entrypoints:
+  entryPoints:
   - web-ext
   routes:
   - match: Host(`fj.jonsimeon.com`)
