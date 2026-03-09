@@ -73,3 +73,10 @@ patches:
     - op: replace
       path: /spec/routes/0/match
       value: Host(`traefik.dev.noodoodle.us`)
+- target:
+    kind: IngressRouteTCP
+    name: forgejo-ssh-ingress
+  patch: |
+    - op: replace
+      path: /spec/routes/0/match
+      value: Host(`fj-ssh.dev.jonsimeon.com`)
