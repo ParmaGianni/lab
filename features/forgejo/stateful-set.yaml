@@ -29,7 +29,7 @@ spec:
         - name: http
           containerPort: 3000
         - name: ssh
-          containerPort: 222
+          containerPort: 22
         env:
         - name: USER_UID
           value: "1000"

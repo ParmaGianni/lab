@@ -19,7 +19,7 @@ spec:
     protocol: UDP
     targetPort: pals
   - name: ssh
-    port: 20
+    port: 22
     targetPort: ssh
   selector:
     app.kubernetes.io/name: traefik
