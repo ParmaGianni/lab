@@ -4,3 +4,4 @@ resources:
 - ../../../features/forgejo
 components:
 - ../../../components/dashboards-dev
+- ../../../components/forgejo-values
