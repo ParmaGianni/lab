@@ -3,3 +3,6 @@ kind: Kustomization
 resources:
 - ../../../features/rook-ceph-operator
 - ../../../features/cloudnative-pg
+- ../../../features/traefik
+components:
+- ../../../components/traefik-values
