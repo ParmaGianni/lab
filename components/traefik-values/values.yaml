@@ -14,7 +14,7 @@ ports:
     port: 2049
     exposedPort: 2049
 
-  git-ssh:
+  ssh:
     exapose:
       default: false
     port: 2222

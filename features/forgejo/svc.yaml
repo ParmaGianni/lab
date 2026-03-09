@@ -32,7 +32,7 @@ metadata:
   name: forgejo-ssh-ingress
 spec:
   entryPoints:
-  - git-ssh
+  - ssh
   routes:
   - match: Host(`fj-ssh.jonsimeon.com`)
     services:
