@@ -34,7 +34,7 @@ spec:
   entryPoints:
   - ssh
   routes:
-  - match: Host(`fj-ssh.jonsimeon.com`)
+  - match: HostSNI(`*`)
     services:
     - name: forgejo-svc
       port: ssh
