@@ -4,7 +4,9 @@ resources:
 - ../../../features/rook-ceph-operator
 - ../../../features/cloudnative-pg
 - ../../../features/traefik
+- ../../../features/traefik-tailscale-svc
 - ../../../features/cloudflared
 components:
 - ../../../components/traefik-values
+- ../../../components/traefik-values-tailscale
 - ../../../components/secrets-dev/cloudflared
