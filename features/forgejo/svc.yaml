@@ -25,3 +25,17 @@ spec:
     services:
     - name: forgejo-svc
       port: http
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: forgejo-ssh-ingress
+spec:
+  entryPoints:
+  - git-ssh
+  routes:
+  - match: Host(`fj-ssh.jonsimeon.com`)
+    services:
+    - name: forgejo-svc
+      port: ssh
+      nativeLB: true
