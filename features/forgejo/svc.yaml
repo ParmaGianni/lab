@@ -21,7 +21,7 @@ spec:
   entrypoints:
   - web-ext
   routes:
-  - services:
+  - match: Host(`fj.jonsimeon.com`)
+    services:
     - name: forgejo-svc
       port: http
-      nativeLB: true
