@@ -11,6 +11,8 @@ data:
   # database
   FORGEJO__DATABASE__DB_TYPE: postgres
   FORGEJO__DATABASE__HOST: forgejo-db-rw:5432
+  # webhook
+  FROGEJO__WEBHOOK__ALLOWED_HOST_LIST: external,loopback
   # other
   FORGEJO__OTHER__SHOW_FOOTER_VERSION: "false"
   FORGEJO__OTHER__SHOW_FOOTER_TEMPLATE_LOAD_TIME: "false"
