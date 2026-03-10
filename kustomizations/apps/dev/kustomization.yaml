@@ -2,6 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../../../features/forgejo
+- ../../../features/woodpecker
 components:
 - ../../../components/forgejo-values
 - ../../../components/forgejo-values-dev
+- ../../../components/woodpecker-values-dev
+- ../../../components/secrets-dev/woodpecker-auth
