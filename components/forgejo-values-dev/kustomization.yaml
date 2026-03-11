@@ -8,10 +8,10 @@ patches:
   patch: |
     - op: replace
       path: /data/FORGEJO__SERVER__DOMAIN
-      value: fj-dev.jonsimeon.com
+      value: fj.ext.noodoodle.us
     - op: replace
       path: /data/FORGEJO__SERVER__ROOT_URL
-      value: https://fj-dev.jonsimeon.com
+      value: http://fj.ext.noodoodle.us
     - op: replace
       path: /data/FORGEJO__SERVER__SSH_DOMAIN
-      value: fj-ssh.dev.jonsimeon.com
+      value: fj-ssh.ext.noodoodle.us
