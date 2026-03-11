@@ -1,6 +1,8 @@
 providers:
   kubernetesCRD:
     allowCrossNamespace: true
+service:
+  enabled: false
 
 ports:
   web:
