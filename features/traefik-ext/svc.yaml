@@ -7,9 +7,6 @@ spec:
   - name: web-ext
     port: 80
     targetPort: web-ext
-  - name: websecure-ext
-    port: 443
-    targetPort: websecure-ext
   selector:
     app.kubernetes.io/name: traefik
   type: ClusterIP
