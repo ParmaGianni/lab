@@ -4,12 +4,11 @@ resources:
 - ../../../features/rook-ceph-operator
 - ../../../features/cloudnative-pg
 - ../../../features/traefik
-- ../../../features/traefik-tailscale-svc
+- ../../../features/traefik-int
+- ../../../features/traefik-ext
 - ../../../features/tailscale
-- ../../../features/cloudflared
 components:
 - ../../../components/traefik-values
+- ../../../components/traefik-ext-dev
 - ../../../components/tailscale-values-dev
-- ../../../components/traefik-values-tailscale
 - ../../../components/secrets-dev/tailscale-oauth
-- ../../../components/secrets-dev/cloudflared

@@ -4,6 +4,7 @@ resources:
 - ../../../features/forgejo
 - ../../../features/woodpecker
 components:
+- ../../../components/dashboards-dev
 - ../../../components/forgejo-values
 - ../../../components/forgejo-values-dev
 - ../../../components/woodpecker-values-dev

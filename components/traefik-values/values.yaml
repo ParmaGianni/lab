@@ -1,6 +1,8 @@
 providers:
   kubernetesCRD:
     allowCrossNamespace: true
+service:
+  enabled: false
 
 ports:
   web:
@@ -42,3 +44,6 @@ ports:
       default: false
     exposedPort: 443
     port: 7443
+    http:
+      tls:
+        enabled: true

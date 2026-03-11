@@ -9,11 +9,11 @@ resources:
 - ../../../features/rook-ceph-operator
 - ../../../features/tailscale
 - ../../../features/traefik
-- ../../../features/traefik-tailscale-svc
+- ../../../features/traefik-int
+- ../../../features/traefik-ext
 components:
 - ../../../components/secrets-prod/arc-auth
 - ../../../components/secrets-prod/cloudflared-auth
 - ../../../components/secrets-prod/tailscale-oauth
 - ../../../components/tailscale-values-prod
 - ../../../components/traefik-values
-- ../../../components/traefik-values-tailscale
