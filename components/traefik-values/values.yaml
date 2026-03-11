@@ -44,3 +44,6 @@ ports:
       default: false
     exposedPort: 443
     port: 7443
+    http:
+      tls:
+        enabled: true
