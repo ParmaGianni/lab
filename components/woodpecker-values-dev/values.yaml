@@ -11,4 +11,4 @@ data:
         WOODPECKER_HOST: https://woodpecker-dev.jonsimeon.com
         WOODPECKER_FORGEJO: "true"
         WOODPECKER_FORGEJO_URL: https://fj-dev.jonsimeon.com
-
+        WOODPECKER_PLUGINS_PRIVILEGED: woodpeckerci/plugin-docker-buildx
