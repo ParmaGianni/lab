@@ -34,16 +34,3 @@ ports:
       default: false
     exposedPort: 80
     port: 7080
-    http:
-      redirections:
-        entryPoint:
-          to: websecure-ext
-
-  websecure-ext:
-    expose:
-      default: false
-    exposedPort: 443
-    port: 7443
-    http:
-      tls:
-        enabled: true
