@@ -20,6 +20,7 @@ metadata:
 spec:
   entryPoints:
   - web-ext
+  - websecure-ext
   routes:
   - match: Host(`fj.jonsimeon.com`)
     services:
