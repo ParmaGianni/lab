@@ -1,14 +1,7 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: woodpecker-values
-  namespace: woodpecker
-data:
-  values.yaml: |
-    server:
-      env:
-        WOODPECKER_ADMIN: test,admin
-        WOODPECKER_HOST: https://woodpecker-dev.jonsimeon.com
-        WOODPECKER_FORGEJO: "true"
-        WOODPECKER_FORGEJO_URL: https://fj-dev.jonsimeon.com
-        WOODPECKER_PLUGINS_PRIVILEGED: woodpeckerci/plugin-docker-buildx
+server:
+  env:
+    WOODPECKER_ADMIN: test,admin
+    WOODPECKER_HOST: http://woodpecker.ext.noodoodle.us
+    WOODPECKER_FORGEJO: "true"
+    WOODPECKER_FORGEJO_URL: http://fj.ext.noodoodle.us
+    WOODPECKER_PLUGINS_PRIVILEGED: woodpeckerci/plugin-docker-buildx

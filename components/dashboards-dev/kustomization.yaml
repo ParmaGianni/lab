@@ -79,11 +79,11 @@ patches:
   patch: |
     - op: replace
       path: /spec/routes/0/match
-      value: Host(`fj.dev.jonsimeon.com`)
+      value: Host(`fj.ext.noodoodle.us`)
 - target:
     kind: IngressRoute
     name: woodpecker-ingress
   patch: |
     - op: replace
       path: /spec/routes/0/match
-      value: Host(`woodpecker.dev.jonsimeon.com`)
+      value: Host(`woodpecker.ext.noodoodle.us`)
