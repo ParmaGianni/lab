@@ -19,7 +19,7 @@ metadata:
   name: forgejo-ingress
 spec:
   entryPoints:
-  - websecure-ext
+  - web-ext
   routes:
   - match: Host(`fj.jonsimeon.com`)
     services:
