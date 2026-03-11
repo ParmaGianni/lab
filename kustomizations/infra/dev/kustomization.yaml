@@ -9,5 +9,6 @@ resources:
 - ../../../features/tailscale
 components:
 - ../../../components/traefik-values
+- ../../../components/traefik-ext-dev
 - ../../../components/tailscale-values-dev
 - ../../../components/secrets-dev/tailscale-oauth
