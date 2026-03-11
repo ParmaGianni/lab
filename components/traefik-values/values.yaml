@@ -35,7 +35,7 @@ ports:
     http:
       redirections:
         entryPoint:
-          to: websecure-ext
+          to: websecure
 
   websecure-ext:
     expose:
