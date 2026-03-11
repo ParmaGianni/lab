@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+patches:
+- target:
+    kind: ConfigMap
+    name: fj-server
+    namespace: forgejo
+  patch: |
+    - op: replace
+      path: /data/FORGEJO__SERVER__DOMAIN
+      value: fj-dev.jonsimeon.com
+    - op: replace
+      path: /data/FORGEJO__SERVER__ROOT_URL
+      value: https://fj-dev.jonsimeon.com
+    - op: replace
+      path: /data/FORGEJO__SERVER__SSH_DOMAIN
+      value: fj-ssh.dev.jonsimeon.com

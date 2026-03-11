@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fj-server
+  namespace: forgejo
+data:
+  # server
+  FORGEJO__SERVER__DOMAIN: fj.jonsimeon.com
+  FORGEJO__SERVER__ROOT_URL: https://fj.jonsimeon.com
+  FORGEJO__SERVER__SSH_DOMAIN: fj-ssh.jonsimeon.com
+  # database
+  FORGEJO__DATABASE__DB_TYPE: postgres
+  FORGEJO__DATABASE__HOST: forgejo-db-rw:5432
+  # webhook
+  FROGEJO__WEBHOOK__ALLOWED_HOST_LIST: external,loopback
+  # other
+  FORGEJO__OTHER__SHOW_FOOTER_VERSION: "false"
+  FORGEJO__OTHER__SHOW_FOOTER_TEMPLATE_LOAD_TIME: "false"
+  FORGEJO__OTHER__SHOW_FOOTER_POWERED_BY: "false"

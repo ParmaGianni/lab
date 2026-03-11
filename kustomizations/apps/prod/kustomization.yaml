@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../../../features/deluge
+- ../../../features/forgejo
 - ../../../features/media-stack-deps
 - ../../../features/media-stack
 - ../../../features/home-assistant
@@ -15,6 +16,7 @@ components:
 - ../../../components/secrets-prod/deluge-auth
 - ../../../components/secrets-prod/palworld-auth
 - ../../../components/dashboards-tls
+- ../../../components/forgejo-values
 - ../../../components/home-assistant-values
 - ../../../components/immich-values
 - ../../../components/palworld-values

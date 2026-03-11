@@ -14,6 +14,12 @@ ports:
     port: 2049
     exposedPort: 2049
 
+  ssh:
+    expose:
+      default: false
+    port: 2222
+    exposedPort: 2222
+
   pals:
     expose:
       default: false

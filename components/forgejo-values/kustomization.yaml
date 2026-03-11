@@ -1,0 +1,39 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+resources:
+- server.yaml
+patches:
+- target:
+    kind: StatefulSet
+    name: forgejo
+    namespace: forgejo
+  patch: |
+    - op: add
+      path: /spec/template/spec/containers/0/envFrom/0
+      value:
+        configMapRef:
+          name: fj-server
+    - op: add
+      path: /spec/template/spec/containers/0/env/0
+      value:
+        name: FORGEJO__DATABASE__NAME
+        valueFrom:
+          secretKeyRef:
+            name: forgejo-db-app
+            key: dbname
+    - op: add
+      path: /spec/template/spec/containers/0/env/0
+      value:
+        name: FORGEJO__DATABASE__USER
+        valueFrom:
+          secretKeyRef:
+            name: forgejo-db-app
+            key: user
+    - op: add
+      path: /spec/template/spec/containers/0/env/0
+      value:
+        name: FORGEJO__DATABASE__PASSWD
+        valueFrom:
+          secretKeyRef:
+            name: forgejo-db-app
+            key: password

@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: forgejo
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: forgejo
+  name: forgejo
+  annotations:
+    reloader.stakater.com/auto: "true"
+spec:
+  serviceName: forgejo-svc
+  replicas: 1
+  selector:
+    matchLabels:
+      app: forgejo
+  template:
+    metadata:
+      labels:
+        app: forgejo
+    spec:
+      containers:
+      - image: codeberg.org/forgejo/forgejo:14.0.3@sha256:8f4b1f86750e206824c669e1af17b6c6e8da9ed1a8ebda615db7526ee86d3eb2
+        name: forgejo
+        ports:
+        - name: http
+          containerPort: 3000
+        - name: ssh
+          containerPort: 22
+        env:
+        - name: USER_UID
+          value: "1000"
+        - name: USER_GID
+          value: "1000"
+        envFrom: []
+        volumeMounts:
+        - name: forgejo-pvc
+          mountPath: /data
+  volumeClaimTemplates:
+  - metadata:
+      name: forgejo-pvc
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi

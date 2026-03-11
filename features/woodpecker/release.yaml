@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: woodpecker
+spec:
+  interval: 24h
+  url: oci://ghcr.io/woodpecker-ci/helm/woodpecker
+  layerSelector:
+    mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
+    operation: copy
+  ref:
+    semver: 3.5.x
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: woodpecker
+  annotations:
+    reloader.stakater.com/auto: "true"
+spec:
+  interval: 5m
+  chartRef:
+    kind: OCIRepository
+    name: woodpecker
+  install:
+    crds: Create
+  upgrade:
+    crds: CreateReplace
+  valuesFrom: []

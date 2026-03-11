@@ -4,6 +4,7 @@ resources:
 - ../../../features/actions-runner-controller
 - ../../../features/actions-runner-mathing
 - ../../../features/cert-manager
+- ../../../features/cloudflared
 - ../../../features/cloudnative-pg
 - ../../../features/rook-ceph-operator
 - ../../../features/tailscale
@@ -11,6 +12,7 @@ resources:
 - ../../../features/traefik-tailscale-svc
 components:
 - ../../../components/secrets-prod/arc-auth
+- ../../../components/secrets-prod/cloudflared-auth
 - ../../../components/secrets-prod/tailscale-oauth
 - ../../../components/tailscale-values-prod
 - ../../../components/traefik-values

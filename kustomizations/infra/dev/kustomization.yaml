@@ -2,3 +2,14 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../../../features/rook-ceph-operator
+- ../../../features/cloudnative-pg
+- ../../../features/traefik
+- ../../../features/traefik-tailscale-svc
+- ../../../features/tailscale
+- ../../../features/cloudflared
+components:
+- ../../../components/traefik-values
+- ../../../components/tailscale-values-dev
+- ../../../components/traefik-values-tailscale
+- ../../../components/secrets-dev/tailscale-oauth
+- ../../../components/secrets-dev/cloudflared

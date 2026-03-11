@@ -3,6 +3,7 @@ kind: Component
 patches:
 - target:
     kind: IngressRoute
+    labelSelector: ingress=int
   patch: |
     - op: replace
       path: /metadata/namespace
