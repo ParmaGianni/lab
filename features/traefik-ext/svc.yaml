@@ -12,4 +12,5 @@ spec:
     targetPort: websecure-ext
   selector:
     app.kubernetes.io/name: traefik
-  type: ClusterIP
+  type: LoadBalancer
+  loadBalancerClass: tailscale
