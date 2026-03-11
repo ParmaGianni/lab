@@ -4,3 +4,4 @@ namespace: woodpecker
 resources:
 - namespace.yaml
 - release.yaml
+- ingress.yaml
