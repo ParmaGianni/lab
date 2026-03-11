@@ -16,6 +16,7 @@ resources:
 components:
 - ../../../components/secrets-prod/deluge-auth
 - ../../../components/secrets-prod/palworld-auth
+- ../../../components/secrets-prod/woodpecker-auth
 - ../../../components/dashboards-tls
 - ../../../components/forgejo-values
 - ../../../components/home-assistant-values
