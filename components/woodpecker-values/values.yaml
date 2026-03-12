@@ -5,3 +5,9 @@ server:
     WOODPECKER_FORGEJO: "true"
     WOODPECKER_FORGEJO_URL: https://fj.jonsimeon.com
     WOODPECKER_PLUGINS_PRIVILEGED: woodpeckerci/plugin-docker-buildx
+    WOODPECKER_DATABASE_DRIVER: postgres
+    WOODPECKER_DATABASE_DATASOURCE:
+      valueFrom:
+        secretKeyRef:
+          name: woodpecker-db-app
+          key: uri
