@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: habiting-ci-cache
+  name: habiting-cache-lint
 spec:
   accessModes:
   - ReadWriteOnce
@@ -13,7 +13,18 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: habiting-cd-cache
+  name: habiting-cache-test
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: habiting-cache-build
 spec:
   accessModes:
   - ReadWriteOnce
