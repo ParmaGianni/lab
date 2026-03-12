@@ -1,4 +1,4 @@
-flux_repo := "ssh://git@github.com/GianniBuoni/lab.git"
+flux_repo := "ssh://git@github.com/ParmaGianni/lab.git"
 
 # Bootstraps flux onto the current context
 @_bootstrap deploy_key:
