@@ -13,6 +13,7 @@ resources:
 - ../../../features/rook-ceph-ingress
 - ../../../features/syncthing
 - ../../../features/woodpecker
+- ../../../features/woodpecker-caches
 components:
 - ../../../components/secrets-prod/deluge-auth
 - ../../../components/secrets-prod/palworld-auth

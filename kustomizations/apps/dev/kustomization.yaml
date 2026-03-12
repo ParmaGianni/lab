@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - ../../../features/forgejo
 - ../../../features/woodpecker
+- ../../../features/woodpecker-caches
 components:
 - ../../../components/dashboards-dev
 - ../../../components/forgejo-values

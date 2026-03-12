@@ -5,8 +5,7 @@ metadata:
   name: habiting-ci-cache
 spec:
   accessModes:
-  - ReadWriteMany
-  storageClassName: ceph-fs
+  - ReadWriteOnce
   resources:
     requests:
       storage: 5Gi
@@ -17,8 +16,7 @@ metadata:
   name: habiting-cd-cache
 spec:
   accessModes:
-  - ReadWriteMany
-  storageClassName: ceph-fs
+  - ReadWriteOnce
   resources:
     requests:
       storage: 5Gi
