@@ -2,7 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../../../features/actions-runner-controller
-- ../../../features/actions-runner-mathing
 - ../../../features/cert-manager
 - ../../../features/cloudflared
 - ../../../features/cloudnative-pg
@@ -12,7 +11,6 @@ resources:
 - ../../../features/traefik-int
 - ../../../features/traefik-ext
 components:
-- ../../../components/secrets-prod/arc-auth
 - ../../../components/secrets-prod/cloudflared-auth
 - ../../../components/secrets-prod/tailscale-oauth
 - ../../../components/tailscale-values-prod
