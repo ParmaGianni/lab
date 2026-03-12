@@ -1,0 +1,24 @@
+# this module defines project caches for task runners
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: habiting-ci-cache
+spec:
+  accessModes:
+  - ReadWriteMany
+  storageClassName: ceph-fs
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: habiting-cd-cache
+spec:
+  accessModes:
+  - ReadWriteMany
+  storageClassName: ceph-fs
+  resources:
+    requests:
+      storage: 5Gi
