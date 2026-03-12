@@ -12,11 +12,11 @@ resources:
 - ../../../features/traefik-dash-ingress
 - ../../../features/rook-ceph-ingress
 - ../../../features/syncthing
-- ../../../features/woodpecker
+# - ../../../features/woodpecker
 components:
 - ../../../components/secrets-prod/deluge-auth
 - ../../../components/secrets-prod/palworld-auth
-- ../../../components/secrets-prod/woodpecker-auth
+# - ../../../components/secrets-prod/woodpecker-auth
 - ../../../components/dashboards-tls
 - ../../../components/forgejo-values
 - ../../../components/home-assistant-values
@@ -24,4 +24,4 @@ components:
 - ../../../components/lscr-security-context
 - ../../../components/media-stack-storage
 - ../../../components/palworld-values
-- ../../../components/woodpecker-values
+# - ../../../components/woodpecker-values
