@@ -6,4 +6,3 @@ resources:
 - release.yaml
 - ingress.yaml
 - pg.yaml
-- pvc-caches.yaml
