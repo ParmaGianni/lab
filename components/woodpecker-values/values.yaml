@@ -2,6 +2,7 @@ agent:
   env:
     WOODPECKER_BACKEND_K8S_STORAGE_CLASS: ceph-fs
     WOODPECKER_BACKEND_K8S_STORAGE_RWX: "true"
+    WOODPECKER_BACKEND_K8S_VOLUME_SIZE: 5G
 server:
   env:
     WOODPECKER_ADMIN: ParmaGianni,admin
